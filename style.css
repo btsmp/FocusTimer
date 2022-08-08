@@ -15,3 +15,81 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    font-size: 1.6rem;
+    display: grid;
+    min-height: 100vh; 
+    place-items: center;
+}
+
+main {
+    display: flex;
+    gap: 19rem;
+}
+
+#counter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+#timer {
+    margin-top: -8vh;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 12.7rem;
+    line-height: 14.8rem;
+
+    display: flex;
+
+    color: var(--fill-colors);
+}
+
+#controls {
+    display: flex;
+    gap: 4rem;
+}
+
+button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#cards-music{
+    display: grid;
+    grid-template-areas: 
+    'A B'
+    'C D';
+    gap: 3.2rem;
+}
+
+#cards-music:nth-child(1){
+    grid-area: A;
+}
+
+#cards-music:nth-child(2){
+    grid-area: B;
+}
+
+#cards-music:nth-child(3){
+    grid-area: C;
+}
+
+#cards-music:nth-child(4){
+    grid-area: D;
+}
+
+.card{
+    background-color: var(--primary-color);
+    padding: 4.7rem;
+    width: 14rem;
+    height: 15rem;
+
+    border-radius: 2.4rem;
+
+    padding: 4rem;
+}
