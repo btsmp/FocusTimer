@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+:root{
+    font-size: 62.5%;
+
+    --bg-light: #E5E5E5;
+    --fill-colors: hsla(240, 6%, 21%, 1);
+    --primary-color: hsla(240, 9%, 89%, 1);
+    --secondary-color: hsla(194, 97%, 31%, 1);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
