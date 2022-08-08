@@ -7,6 +7,7 @@ const cards = document.querySelectorAll(".card")
 let minutesDisplay = document.querySelector("#minutes")
 let secondsDisplay = document.querySelector("#seconds")
 let timerTimeOut
+let newMinutes
 
 function countdown() {
     timerTimeOut = setTimeout(function () {
@@ -46,20 +47,27 @@ buttonPause.addEventListener("click", function(){
 })
 
 buttonStop.addEventListener("click", function(){
+    if (!newMinutes){
+        minutesDisplay.textContent = 25
+    } else {
+        minutesDisplay.textContent = newMinutes
+    }
+    secondsDisplay.textContent = '00'
     clearTimeout(timerTimeOut)
-    minutesDisplay.textContent = String(minutes).padStart(2, '0')
-    secondsDisplay.textContent = '00 '
+
+    buttonPlay.classList.remove('hide')
+    buttonPause.classList.add('hide')
 
 })
 
 buttonPlus.addEventListener("click", function () {
-    let newMinutes = Number(minutesDisplay.textContent) + 5
+    newMinutes = Number(minutesDisplay.textContent) + 5
 
     minutesDisplay.textContent = String(newMinutes).padStart(2, '0')
 })
 
 buttonLess.addEventListener("click", function () {
-    let newMinutes = Number(minutesDisplay.textContent) - 5
+    newMinutes = Number(minutesDisplay.textContent) - 5
 
     minutesDisplay.textContent = String(newMinutes).padStart(2, '0')
 })
