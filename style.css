@@ -7,6 +7,7 @@
     --fill-colors: hsla(240, 6%, 21%, 1);
     --primary-color: hsla(240, 9%, 89%, 1);
     --secondary-color: hsla(194, 97%, 31%, 1);
+    --animation-duration: 0.3s
 }
 
 
@@ -53,6 +54,10 @@ main {
     gap: 4rem;
 }
 
+.hide {
+    display: none;
+}
+
 button{
     background: transparent;
     border: none;
@@ -92,6 +97,17 @@ button{
     border-radius: 2.4rem;
 
     padding: 4rem;
+    transition-duration: var(--animation-duration);
+}
+
+.active {
+    background-color: var(--secondary-color);
+    transition-duration: var(--animation-duration);
+}
+
+.active svg path{
+    fill: white;
+    transition-duration: var(--animation-duration);
 }
 
 @media only screen and (max-width: 900px)  {
