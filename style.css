@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
-:root{
+:root {
     font-size: 62.5%;
 
     --bg: #FFFFFF;
@@ -20,13 +20,13 @@
 body {
     font-size: 1.6rem;
     display: grid;
-    min-height: 100vh; 
+    min-height: 100vh;
     place-items: center;
 
     background-color: var(--bg);
 }
 
-section{
+section {
     position: absolute;
     top: 6rem;
     right: 6rem;
@@ -62,7 +62,7 @@ main {
     gap: 4rem;
 }
 
-svg path{
+svg path {
     fill: var(--fill-colors);
 }
 
@@ -70,46 +70,86 @@ svg path{
     display: none;
 }
 
-button{
+button {
     background: transparent;
     border: none;
     cursor: pointer;
 }
 
-#cards-music{
+#cards-music {
     display: grid;
-    grid-template-areas: 
-    'A B'
-    'C D';
+    grid-template-areas:
+        'A B'
+        'C D';
     gap: 3.2rem;
 }
 
-#cards-music:nth-child(1){
+#cards-music:nth-child(1) {
     grid-area: A;
 }
 
-#cards-music:nth-child(2){
+#cards-music:nth-child(2) {
     grid-area: B;
 }
 
-#cards-music:nth-child(3){
+#cards-music:nth-child(3) {
     grid-area: C;
 }
 
-#cards-music:nth-child(4){
+#cards-music:nth-child(4) {
     grid-area: D;
 }
 
-.card{
+.card {
     background-color: var(--primary-color);
-    padding: 4.7rem;
+    padding-left: 4.7rem;
+    padding-right: 4.7rem;
     width: 14rem;
     height: 15rem;
 
     border-radius: 2.4rem;
 
-    padding: 4rem;
     transition-duration: var(--animation-duration);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
+    
+    position: relative
+}
+
+.volume-bar{
+    width: 9rem;
+    height: 4px;
+    appearance: none;
+    border-radius: 5px;
+
+    background-color: var(--fill-colors);
+}
+
+.volume-bar::-webkit-slider-thumb{
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background-color: var(--fill-colors);
+    cursor: pointer;
+
+    border: none;
+}
+
+.volume-bar::-moz-range-thumb {
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--fill-colors);
+    cursor: pointer;
+    border: none;
+}
+
+.volume-bar-active,.volume-bar-active::-moz-range-thumb,.volume-bar::-webkit-slider-thumb{
+    background-color: #FFFFFF;
 }
 
 .active {
@@ -117,19 +157,19 @@ button{
     transition-duration: var(--animation-duration);
 }
 
-.active svg path{
+.active svg path {
     fill: white;
     transition-duration: var(--animation-duration);
 }
 
-@media only screen and (max-width: 900px)  {
-    main{
+@media only screen and (max-width: 900px) {
+    main {
         flex-direction: column;
         gap: 5rem
     }
 
-    #cards-music{
+    #cards-music {
         gap: 2rem;
     }
-    
+
 }

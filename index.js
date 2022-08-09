@@ -10,7 +10,7 @@ let timerTimeOut
 let newMinutes
 
 function countdown() {
-    timerTimeOut = setTimeout(function () {
+    timerTimeOut = setTimeout(() => {
         let seconds = Number(secondsDisplay.textContent)
         let minutes = Number(minutesDisplay.textContent)
 
@@ -24,33 +24,30 @@ function countdown() {
             minutes--
         }
 
-
         secondsDisplay.textContent = String(seconds - 1).padStart(2, '0')
         minutesDisplay.textContent = String(minutes).padStart(2, '0')
-
-        console.log(seconds, minutes)
 
         countdown()
 
     }, 1000)
 }
 
-buttonPlay.addEventListener("click", function(){
+buttonPlay.addEventListener("click", () => {
     buttonPlay.classList.toggle("hide")
     buttonPause.classList.toggle("hide")
     countdown()
     buttonPressAudio.play()
 })
 
-buttonPause.addEventListener("click", function(){
+buttonPause.addEventListener("click", () => {
     buttonPlay.classList.toggle("hide")
     buttonPause.classList.toggle("hide")
     clearTimeout(timerTimeOut)
     buttonPressAudio.play()
 })
 
-buttonStop.addEventListener("click", function(){
-    if (!newMinutes){
+buttonStop.addEventListener("click", () => {
+    if (!newMinutes) {
         minutesDisplay.textContent = 25
     } else {
         minutesDisplay.textContent = newMinutes
@@ -64,13 +61,13 @@ buttonStop.addEventListener("click", function(){
 
 })
 
-buttonPlus.addEventListener("click", function () {
+buttonPlus.addEventListener("click", () => {
     newMinutes = Number(minutesDisplay.textContent) + 5
 
     minutesDisplay.textContent = String(newMinutes).padStart(2, '0')
 })
 
-buttonLess.addEventListener("click", function () {
+buttonLess.addEventListener("click", () => {
     newMinutes = Number(minutesDisplay.textContent) - 5
 
     if (newMinutes < 0) {
@@ -80,35 +77,43 @@ buttonLess.addEventListener("click", function () {
     minutesDisplay.textContent = String(newMinutes).padStart(2, '0')
 })
 
-
 // audio
 
 const soundForest = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Floresta.wav?raw=true")
 const soundRain = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Chuva.wav?raw=true")
 const soundCoffeshop = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Cafeteria.wav?raw=true")
-const soundFirePlace = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Lareira.wav?raw=true") 
+const soundFirePlace = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Lareira.wav?raw=true")
 const buttonPressAudio = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/button-press.wav?raw=true")
 const kitchenTimer = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/kichen-timer.mp3?raw=true")
+const volumeBars = document.querySelectorAll(".volume-bar")
 
 const audios = [soundForest, soundRain, soundCoffeshop, soundFirePlace]
 
-for (let i = 0; i < cards.length; i++){
+for (let i = 0; i < cards.length; i++) { //iterar os cartões e adicionar um evento para cada um deles
 
-    cards[i].addEventListener('click', function(){
+    cards[i].addEventListener('click', () => {
 
-        if (!audios[i].paused){
-            
+        if (!audios[i].paused) {
+
             audios[i].pause()
             cards[i].classList.remove('active')
+            cards[i].lastElementChild.classList.remove('volume-bar-active')
             return
         }
 
         cards[i].classList.add('active')
+        cards[i].lastElementChild.classList.add('volume-bar-active')
         audios[i].play()
-        audios[i].loop
+        audios[i].loop = true
     })
 }
 
+for (let bar = 0; bar < volumeBars.length; bar++) {
+    volumeBars[bar].addEventListener('change', () => {
+        console.log(volumeBars[bar].value)
+        audios[bar].volume = volumeBars[bar].value
+    })
+}
 
 // switcher dark/light mode
 
@@ -135,19 +140,17 @@ lightButton.addEventListener("click", () => {
     changeTheme(darkTheme)
     lightButton.classList.toggle('hide')
     darkButton.classList.toggle('hide')
-    console.log('hi')
 })
 
 darkButton.addEventListener("click", () => {
     changeTheme(lightTheme)
     lightButton.classList.toggle('hide')
     darkButton.classList.toggle('hide')
-    console.log('hi')
 })
 
 
-function changeTheme(theme){
-    for (let prop in theme){
+function changeTheme(theme) {
+    for (let prop in theme) {
         changeProperty(prop, theme[prop])
     }
 }
