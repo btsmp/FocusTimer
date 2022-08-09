@@ -84,9 +84,20 @@ const soundCoffeshop = new Audio("https://github.com/ViiniciusGM/stage05-desafio
 const soundFirePlace = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Lareira.wav?raw=true") 
 
 const audios = [soundForest, soundRain, soundCoffeshop, soundFirePlace]
+
 for (let i = 0; i < cards.length; i++){
+
     cards[i].addEventListener('click', function(){
-        cards[i].classList.toggle('active')
+
+        if (!audios[i].paused){
+            
+            audios[i].pause()
+            cards[i].classList.remove('active')
+            return
+        }
+        
+        cards[i].classList.add('active')
         audios[i].play()
+        audios[i].loop
     })
 }
