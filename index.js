@@ -15,6 +15,7 @@ function countdown() {
         let minutes = Number(minutesDisplay.textContent)
 
         if (minutes == 0 && seconds <= 0) {
+            kitchenTimer.play()
             return
         }
 
@@ -38,12 +39,14 @@ buttonPlay.addEventListener("click", function(){
     buttonPlay.classList.toggle("hide")
     buttonPause.classList.toggle("hide")
     countdown()
+    buttonPressAudio.play()
 })
 
 buttonPause.addEventListener("click", function(){
     buttonPlay.classList.toggle("hide")
     buttonPause.classList.toggle("hide")
     clearTimeout(timerTimeOut)
+    buttonPressAudio.play()
 })
 
 buttonStop.addEventListener("click", function(){
@@ -57,6 +60,7 @@ buttonStop.addEventListener("click", function(){
 
     buttonPlay.classList.remove('hide')
     buttonPause.classList.add('hide')
+    buttonPressAudio.play()
 
 })
 
@@ -78,10 +82,13 @@ buttonLess.addEventListener("click", function () {
 
 
 // audio
+
 const soundForest = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Floresta.wav?raw=true")
 const soundRain = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Chuva.wav?raw=true")
 const soundCoffeshop = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Cafeteria.wav?raw=true")
 const soundFirePlace = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Lareira.wav?raw=true") 
+const buttonPressAudio = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/button-press.wav?raw=true")
+const kitchenTimer = new Audio("https://github.com/maykbrito/automatic-video-creator/blob/master/audios/kichen-timer.mp3?raw=true")
 
 const audios = [soundForest, soundRain, soundCoffeshop, soundFirePlace]
 
@@ -95,7 +102,7 @@ for (let i = 0; i < cards.length; i++){
             cards[i].classList.remove('active')
             return
         }
-        
+
         cards[i].classList.add('active')
         audios[i].play()
         audios[i].loop
