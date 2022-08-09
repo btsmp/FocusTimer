@@ -16,6 +16,8 @@ function countdown() {
 
         if (minutes == 0 && seconds <= 0) {
             kitchenTimer.play()
+            buttonPlay.classList.remove('hide')
+            buttonPause.classList.add('hide')
             return
         }
 
@@ -50,7 +52,7 @@ buttonStop.addEventListener("click", () => {
     if (!newMinutes) {
         minutesDisplay.textContent = 25
     } else {
-        minutesDisplay.textContent = newMinutes
+        minutesDisplay.textContent = String(newMinutes).padStart(2, '0')
     }
     secondsDisplay.textContent = '00'
     clearTimeout(timerTimeOut)
@@ -70,8 +72,8 @@ buttonPlus.addEventListener("click", () => {
 buttonLess.addEventListener("click", () => {
     newMinutes = Number(minutesDisplay.textContent) - 5
 
-    if (newMinutes < 0) {
-        newMinutes = 0
+    if (newMinutes <= 0) {
+        newMinutes = 05
     }
 
     minutesDisplay.textContent = String(newMinutes).padStart(2, '0')
@@ -108,7 +110,7 @@ for (let i = 0; i < cards.length; i++) { //iterar os cartões e adicionar um eve
     })
 }
 
-for (let bar = 0; bar < volumeBars.length; bar++) {
+for (let bar = 0; bar < volumeBars.length; bar++) { //iterar as barras de volume
     volumeBars[bar].addEventListener('change', () => {
         console.log(volumeBars[bar].value)
         audios[bar].volume = volumeBars[bar].value
