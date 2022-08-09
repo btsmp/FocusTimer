@@ -3,13 +3,13 @@
 :root{
     font-size: 62.5%;
 
-    --bg-light: #E5E5E5;
-    --fill-colors: hsla(240, 6%, 21%, 1);
+    --bg: #FFFFFF;
+    --text-color: hsla(240, 6%, 21%, 1);
+    --fill-colors: #323238;
     --primary-color: hsla(240, 9%, 89%, 1);
     --secondary-color: hsla(194, 97%, 31%, 1);
     --animation-duration: 0.3s
 }
-
 
 * {
     margin: 0;
@@ -22,6 +22,14 @@ body {
     display: grid;
     min-height: 100vh; 
     place-items: center;
+
+    background-color: var(--bg);
+}
+
+section{
+    position: absolute;
+    top: 6rem;
+    right: 6rem;
 }
 
 main {
@@ -46,12 +54,16 @@ main {
 
     display: flex;
 
-    color: var(--fill-colors);
+    color: var(--text-color);
 }
 
 #controls {
     display: flex;
     gap: 4rem;
+}
+
+svg path{
+    fill: var(--fill-colors);
 }
 
 .hide {
