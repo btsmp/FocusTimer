@@ -69,12 +69,24 @@ buttonPlus.addEventListener("click", function () {
 buttonLess.addEventListener("click", function () {
     newMinutes = Number(minutesDisplay.textContent) - 5
 
+    if (newMinutes < 0) {
+        newMinutes = 0
+    }
+
     minutesDisplay.textContent = String(newMinutes).padStart(2, '0')
 })
 
-for (let card of cards){
-    card.addEventListener("click", function(){
-        card.classList.toggle("active")
+
+// audio
+const soundForest = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Floresta.wav?raw=true")
+const soundRain = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Chuva.wav?raw=true")
+const soundCoffeshop = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Cafeteria.wav?raw=true")
+const soundFirePlace = new Audio("https://github.com/ViiniciusGM/stage05-desafio01/blob/main/sounds/Lareira.wav?raw=true") 
+
+const audios = [soundForest, soundRain, soundCoffeshop, soundFirePlace]
+for (let i = 0; i < cards.length; i++){
+    cards[i].addEventListener('click', function(){
+        cards[i].classList.toggle('active')
+        audios[i].play()
     })
 }
-
