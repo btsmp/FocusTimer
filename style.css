@@ -172,4 +172,8 @@ button {
         gap: 2rem;
     }
 
+    section{
+        top: 2rem;
+    }
+
 }
